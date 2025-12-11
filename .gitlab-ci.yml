@@ -1,0 +1,12 @@
+variables:
+  COMPOSE_PROJECT_NAME: bg1-docs
+host:
+  tags:
+    - docker
+  image: docker:cli
+  stage: build
+  services:
+    - docker:dind
+  script:
+    - docker compose up -d
+

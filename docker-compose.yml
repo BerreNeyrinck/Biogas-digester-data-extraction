@@ -1,0 +1,22 @@
+name: iot-bg1-docs
+services:
+  caddy:
+    image: caddy:2.10
+    container_name: bg1
+    restart: unless-stopped
+    cap_add:
+      - NET_ADMIN
+    volumes:
+      - $PWD/caddy/conf:/etc/caddy
+      - $PWD:/srv
+      - caddy_data:/data
+      - caddy_config:/config
+    networks:
+      - iot-docs
+
+volumes:
+  caddy_data:
+  caddy_config:
+networks:
+  iot-docs:
+    external: true

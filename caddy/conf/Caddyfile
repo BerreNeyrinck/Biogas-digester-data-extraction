@@ -1,0 +1,10 @@
+http://:3000 {
+	encode gzip zstd
+
+	@blocked {
+		path /caddy* /docker-compose.yml
+	}
+	respond @blocked "Access denied" 403
+
+	file_server
+}
